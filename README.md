@@ -48,15 +48,16 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 | [docs/voice-continuity.md](docs/voice-continuity.md) | ⚠️ **语音连贯性 SOP**：跨段保持同一角色声音（TTS/音色锚点） |
 | [docs/repair-sop.md](docs/repair-sop.md) | 补镜与修复 SOP：延长上限、60 秒天花板、剪一段再延长（踩坑实录） |
 | [docs/post-production.md](docs/post-production.md) | 剪映后期去 AI 感：颗粒/暗角/调色/导出参数 |
-| [examples/coffee-plan/](examples/coffee-plan/) | 案例一：《咖啡计划》30 秒粤语咖啡广告（单次直出） |
-| [examples/rainy-night/](examples/rainy-night/) | 案例二：《雨夜》85 秒三段式悲剧短片（直出+延长+补镜+独立场景） |
+| 案例一《咖啡计划》 | 30 秒粤语咖啡广告（单次直出）：[剧本](examples/coffee-plan/story.md) · [提示词](examples/coffee-plan/prompts.md) |
+| 案例二《雨夜》 | 85 秒三段式悲剧短片：[剧本](examples/rainy-night/story.md) · [第一段](examples/rainy-night/segment-1-prompt.md) · [第二段+补镜](examples/rainy-night/segment-2-prompt.md) · [第三段](examples/rainy-night/segment-3-prompt.md) · [参考图](examples/rainy-night/image-prompts.md) |
+| [CHANGELOG.md](CHANGELOG.md) | 版本历史 |
 
 ## 快速上手
 
 1. **读 [FORMULA.md](FORMULA.md) 的"最终组装模板"**——一条 2.5 提示词的完整骨架
 2. **照抄一个 example**——两个案例的提示词都是实测跑通的成品，改主体就能用
 3. **每次换场景/新段生成前，过一遍 [material-discipline.md](docs/material-discipline.md) 的删图清单**
-4. **角色有台词的，跨段生成前先按 [voice-continuity.md](docs/voice-continuity.md) 剪音色锚点**
+4. **角色有台词的**：延长段自动继承音色（加一句延续声明即可）；**独立新生成的段落必须先按 [voice-continuity.md](docs/voice-continuity.md) 剪音色锚点并绑定**
 5. 想让 Claude 自动干这些：把整个仓库放进 `~/.claude/skills/jacob-seedance/`，对 Claude 说一句剧情即可
 
 ## 实战验证记录
@@ -78,6 +79,6 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 
 ## License
 
-CC BY 4.0 — 转载与二创请注明出处。
+[CC BY 4.0](LICENSE) — 转载与二创请注明出处。
 
 *JACOB YE · SEEDANCE PROMPT 1.0 · 2026-08*
