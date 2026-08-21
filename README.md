@@ -8,6 +8,7 @@
 > and what must stay consistent between shots.
 >
 > **Make AI video feel photographed, not generated.**
+> 这个项目的护城河只有一条：**电影感**——见 [FORMULA.md 第 14 章"大师级电影感军规"](FORMULA.md)，每一条都来自成片逐帧评审，不是理论。
 
 由 Jacob Ye 在 Seedance 2.0 时代自研的 FILM FORMULA V2.0，与字节跳动 Seedance 2.5 官方提示词手册（2026-07-31）全量合并而成，并经过两个完整成片项目实战验证：一支 30 秒粤语咖啡广告、一部 85 秒三段式粤语悲剧短片《雨夜》。
 
@@ -49,7 +50,7 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 | [docs/repair-sop.md](docs/repair-sop.md) | 补镜与修复 SOP：延长上限、60 秒天花板、剪一段再延长（踩坑实录） |
 | [docs/post-production.md](docs/post-production.md) | 剪映后期去 AI 感：颗粒/暗角/调色/导出参数 |
 | 案例一《咖啡计划》 | 30 秒粤语咖啡广告（单次直出）：[剧本](examples/coffee-plan/story.md) · [提示词](examples/coffee-plan/prompts.md) |
-| 案例二《雨夜》 | 85 秒三段式悲剧短片：[剧本](examples/rainy-night/story.md) · [第一段](examples/rainy-night/segment-1-prompt.md) · [第二段+补镜](examples/rainy-night/segment-2-prompt.md) · [第三段](examples/rainy-night/segment-3-prompt.md) · [参考图](examples/rainy-night/image-prompts.md) |
+| 案例二《雨夜》 | 85 秒三段式悲剧短片：[剧本](examples/rainy-night/story.md) · [第一段](examples/rainy-night/segment-1-prompt.md) · [第二段+补镜](examples/rainy-night/segment-2-prompt.md) · [第三段](examples/rainy-night/segment-3-prompt.md) · [参考图](examples/rainy-night/image-prompts.md) · [成片评审复盘](examples/rainy-night/review.md) |
 | [CHANGELOG.md](CHANGELOG.md) | 版本历史 |
 
 ## 快速上手
