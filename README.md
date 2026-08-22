@@ -43,8 +43,9 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 
 | 文件 | 内容 |
 |---|---|
-| [FORMULA.md](FORMULA.md) | 完整框架（V3.0）：参考编排 / 双轨时间结构 / 摄影系统 / 呼吸感 / 表演 / 声音 / 一致性 / Anti-AI / 分镜板 / 长度控制 |
+| [FORMULA.md](FORMULA.md) | 完整框架（V3.2）：参考编排 / 时间结构 / 摄影系统 / 呼吸感 / 表演 / 声音 / 一致性 / Anti-AI / 电影感军规 / 枕镜头 / 镜头矩阵 / 表情肌肉系统 / 画框物理可行性 / 台词工程 |
 | [SKILL.md](SKILL.md) | Claude Code Skill 入口——装进 `~/.claude/skills/`，说一句话产出导演级提示词 |
+| [AGENTS.md](AGENTS.md) | **给任何 AI 代理的使用说明**（Codex / Cursor / Gemini CLI 等）：必读顺序、工作流、交付前自检清单 |
 | [docs/material-discipline.md](docs/material-discipline.md) | ⚠️ **素材纪律：转场/换段时该删哪些图**（乱入事故的头号预防） |
 | [docs/voice-continuity.md](docs/voice-continuity.md) | ⚠️ **语音连贯性 SOP**：跨段保持同一角色声音（TTS/音色锚点） |
 | [docs/repair-sop.md](docs/repair-sop.md) | 补镜与修复 SOP：延长上限、60 秒天花板、剪一段再延长（踩坑实录） |
@@ -60,6 +61,24 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 3. **每次换场景/新段生成前，过一遍 [material-discipline.md](docs/material-discipline.md) 的删图清单**
 4. **角色有台词的**：延长段自动继承音色（加一句延续声明即可）；**独立新生成的段落必须先按 [voice-continuity.md](docs/voice-continuity.md) 剪音色锚点并绑定**
 5. 想让 Claude 自动干这些：把整个仓库放进 `~/.claude/skills/jacob-seedance/`，对 Claude 说一句剧情即可
+
+## 在其他 AI 代理里使用
+
+仓库是纯 Markdown，任何能读文件的代理都能用。
+
+```bash
+git clone https://github.com/jacobye2017-afk/jacob-ye-seedance-prompt.git
+cd jacob-ye-seedance-prompt
+```
+
+| 代理 | 用法 |
+|---|---|
+| **Codex CLI** | 在仓库目录里启动，它会自动读取 [AGENTS.md](AGENTS.md)；直接说"帮我写一段30秒雨夜吵架的提示词" |
+| **Cursor / Windsurf** | 打开仓库为工作区，让它先读 AGENTS.md 和 FORMULA.md |
+| **Claude Code** | 复制到 `~/.claude/skills/jacob-seedance/`，或在仓库目录里直接对话 |
+| **Gemini CLI / 其他** | 让代理先读 AGENTS.md，其余照做 |
+
+不想装工具的话，把 [FORMULA.md](FORMULA.md) 的 §12 组装模板和 §14 军规贴进任意聊天窗口，也能直接用。
 
 ## 实战验证记录
 
