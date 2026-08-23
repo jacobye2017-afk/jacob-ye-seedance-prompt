@@ -16,6 +16,7 @@
    - §18 画框物理可行性与提示词工程纪律 ← **最容易翻车的地方**
    - §19 台词工程（多语言/方言）
    - §21 角色卡制作与平台合规（过审格式、场景档案、宫格的正确用途）
+   - ⭐ [docs/cinematic-techniques.md](docs/cinematic-techniques.md) 电影感十一条速查（想快速上手先看这份）
    - §22 进场纪律与镜头配比
 2. **[docs/material-discipline.md](docs/material-discipline.md)** —— 每段生成前列"挂什么图、删什么图"
 3. **[docs/voice-continuity.md](docs/voice-continuity.md)** —— 角色跨段说话时的音色锚点

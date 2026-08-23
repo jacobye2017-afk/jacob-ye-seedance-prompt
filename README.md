@@ -46,6 +46,7 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 | [FORMULA.md](FORMULA.md) | 完整框架（V3.2）：参考编排 / 时间结构 / 摄影系统 / 呼吸感 / 表演 / 声音 / 一致性 / Anti-AI / 电影感军规 / 枕镜头 / 镜头矩阵 / 表情肌肉系统 / 画框物理可行性 / 台词工程 |
 | [SKILL.md](SKILL.md) | Claude Code Skill 入口——装进 `~/.claude/skills/`，说一句话产出导演级提示词 |
 | [AGENTS.md](AGENTS.md) | **给任何 AI 代理的使用说明**（Codex / Cursor / Gemini CLI 等）：必读顺序、工作流、交付前自检清单 |
+| [docs/cinematic-techniques.md](docs/cinematic-techniques.md) | ⭐ **电影感十一条拍摄手法（速查）**——想快速上手先看这份 |
 | [docs/material-discipline.md](docs/material-discipline.md) | ⚠️ **素材纪律：转场/换段时该删哪些图**（乱入事故的头号预防） |
 | [docs/voice-continuity.md](docs/voice-continuity.md) | ⚠️ **语音连贯性 SOP**：跨段保持同一角色声音（TTS/音色锚点） |
 | [docs/repair-sop.md](docs/repair-sop.md) | 补镜与修复 SOP：延长上限、60 秒天花板、剪一段再延长（踩坑实录） |
