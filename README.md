@@ -219,7 +219,7 @@ Found a new way this breaks, and already have a fix that works? Open a PR. Follo
 
 ## License
 
-[CC BY 4.0](LICENSE) — please credit on reuse or derivative work.
+[CC BY 4.0](LICENSE) — please credit on reuse or derivative work. See [NOTICE](NOTICE) for attribution and incorporated sources.
 
 ---
 

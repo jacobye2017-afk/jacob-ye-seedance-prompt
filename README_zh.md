@@ -216,7 +216,7 @@ cd jacob-ye-seedance-prompt
 
 ## License
 
-[CC BY 4.0](LICENSE) — 转载与二创请注明出处。
+[CC BY 4.0](LICENSE) — 转载与二创请注明出处，署名与引用来源见 [NOTICE](NOTICE)。
 
 ---
 
