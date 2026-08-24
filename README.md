@@ -1,105 +1,228 @@
-# JACOB YE · SEEDANCE PROMPT 1.0
+# JACOB YE · SEEDANCE PROMPT
 
-**A director-first cinematic prompt framework for Seedance 2.5 (即梦) AI video generation.**
+**English** | [简体中文](README_zh.md)
 
-> Most AI video prompts describe what a scene looks like.
-> This framework describes what the camera is doing, what the light is doing,
-> what the environment is doing, what the actor is feeling, what the audience is hearing —
-> and what must stay consistent between shots.
+[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
+[![Built for Seedance 2.5](https://img.shields.io/badge/built%20for-Seedance%202.5%20(Jimeng)-blueviolet)](https://jimeng.jianying.com/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/jacobye2017-afk/jacob-ye-seedance-prompt)](https://github.com/jacobye2017-afk/jacob-ye-seedance-prompt/commits/master)
+[![Stars](https://img.shields.io/github/stars/jacobye2017-afk/jacob-ye-seedance-prompt?style=social)](https://github.com/jacobye2017-afk/jacob-ye-seedance-prompt/stargazers)
+
+**A director-first cinematic prompt framework for Seedance 2.5 (ByteDance's Jimeng AI video model).**
+
+> Most AI video prompts describe what a scene *looks like*.
+> This framework describes what the camera is doing, what the light is doing, what the environment is doing,
+> what the actor is feeling, what the audience is hearing — and what must stay consistent between shots.
 >
 > **Make AI video feel photographed, not generated.**
-> 这个项目的护城河只有一条：**电影感**——见 [FORMULA.md 第 14 章"大师级电影感军规"](FORMULA.md)，每一条都来自成片逐帧评审，不是理论。
 
-由 Jacob Ye 在 Seedance 2.0 时代自研的 FILM FORMULA V2.0，与字节跳动 Seedance 2.5 官方提示词手册（2026-07-31）全量合并而成，并经过两个完整成片项目实战验证：一支 30 秒粤语咖啡广告、一部 85 秒三段式粤语悲剧短片《雨夜》。
+Originally authored by Jacob Ye as FILM FORMULA V2.0 during the Seedance 2.0 era, fully merged with ByteDance's official Seedance 2.5 prompt guide (2026-07-31), and battle-tested across **two finished short films**: a 30-second Cantonese coffee-shop ad and a ~6-minute three-act Cantonese tearjerker. **Every rule in this repository was paid for in generation credits, not theorized in advance.**
 
 ---
 
-## 核心公式
+## The problem this solves
+
+Write "cinematic, 4K, dramatic lighting" and hand it to a video model, and you get generic AI slop: symmetric fake-looking faces, overacted emotion, props that appear out of nowhere, shots that ask the model to fit something impossible into the frame.
+
+This is not a keyword list. It's an **executable directing method**: every shot is decomposed into focal length / framing / camera move / three-layer lighting / muscle-level emotion chains / subtext / a bounded end-state — so the model has no room to freelance.
+
+**A real before/after** (from the finished *Coffee Plan* short — this exact prompt shipped):
+
+<table>
+<tr><td width="50%" valign="top">
+
+**❌ The common way**
+
+```
+He gently hands her an umbrella,
+a moment of tension, cinematic, 8K
+```
+
+Whatever the model does with this is pure chance.
+
+</td><td width="50%" valign="top">
+
+**✅ This framework's way**
+
+```
+The glass door opens; he steps out, one hand holding a
+steaming latte, the other a clear long-handled umbrella,
+camera pushes slowly to a medium close two-shot; he says
+in warm, natural Cantonese: {Don't catch a cold, take the
+umbrella.} Their fingertips brush during the handoff.
+Subtext: his tone is casual, but the handle is already
+dry — the preparation gives away how much he cares.
+End state: she now holds both the coffee and the umbrella,
+their eyes meet.
+```
+
+Framing, action, dialogue, subtext, and end-state are all pinned down.
+
+</td></tr>
+</table>
+
+The difference isn't length. It's that **the model no longer has to guess.**
+
+---
+
+## Core formula
 
 ```
 CINEMATIC AI SHOT (2.5) =
-  参考绑定（WORLD/ACTOR 分离 + 职责声明 + 排除声明）
-  + LENS（一窗一焦段） + 构图 + 运镜（一窗一运镜）
-  + LIGHT（光源 → 光行为 → 色调 三层）
-  + 呼吸感（环境微动 + 人物微动 + 镜头微动 + 声音微动）
-  + 微表演 + 潜台词（情绪分析）
-  + 声音标记 ( )音乐 < >音效 { }台词 + 语言声明
-  + 结束状态（每拍必写）
-  + CONTINUITY 锁定
-  + 双层 ANTI-AI 禁令（全局 + 场景专属）
+  Reference binding (WORLD/ACTOR separation + role declaration + exclusion clause)
+  + LENS (one focal length per shot) + composition + camera move (one move per shot)
+  + LIGHT (source → behavior → grade, three layers)
+  + Breathing feel (environment + character + camera + sound micro-motion)
+  + Micro-performance (muscle chain + amplitude constraint) + subtext (emotional analysis)
+  + Audio markers ( )music < >sfx { }dialogue + language declaration
+  + End state (mandatory per beat, bounded by the stated framing)
+  + Continuity locks
+  + Two-tier anti-AI bans (global + scene-specific)
 
-约束：每窗 ≥3 秒 ｜ 一窗一个核心动作 + 一个运镜 ｜ 时长/比例在生成页面设置
+Constraints: each beat ≥3s | one core action + one camera move per beat | duration/aspect ratio set on the generation page, not in the prompt
 ```
 
 ```
-BREATHING FEEL = 环境微动 + 人物微动 + 镜头微动 + 声音微动
+BREATHING FEEL = environment micro-motion + character micro-motion + camera micro-motion + sound micro-motion
 ```
 
-## 十问（动笔前回答）
+## Ten questions to answer before writing a single beat
 
-WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · LIGHT 光从哪来 · MOTION 什么在动 · PERFORMANCE 演员只做什么 · EMOTION 观众该感觉什么 · CONTINUITY 上一镜什么不能变 · ANTI-AI 什么绝对不能出现 · **SOUND 观众听到什么**
+WORLD (what's the setting) · ACTOR (who's in it) · CAMERA (what is it doing) · LIGHT (where's it from) · MOTION (what's moving) · PERFORMANCE (what does the actor *only* do) · EMOTION (what should the audience feel) · CONTINUITY (what must not change from the last shot) · ANTI-AI (what must never appear) · **SOUND (what does the audience hear)**
 
-## 仓库导航
+---
 
-| 文件 | 内容 |
+## What's inside FORMULA.md (22 chapters)
+
+| § | Topic |
 |---|---|
-| [FORMULA.md](FORMULA.md) | 完整框架（V3.2）：参考编排 / 时间结构 / 摄影系统 / 呼吸感 / 表演 / 声音 / 一致性 / Anti-AI / 电影感军规 / 枕镜头 / 镜头矩阵 / 表情肌肉系统 / 画框物理可行性 / 台词工程 |
-| [SKILL.md](SKILL.md) | Claude Code Skill 入口——装进 `~/.claude/skills/`，说一句话产出导演级提示词 |
-| [AGENTS.md](AGENTS.md) | **给任何 AI 代理的使用说明**（Codex / Cursor / Gemini CLI 等）：必读顺序、工作流、交付前自检清单 |
-| [docs/cinematic-techniques.md](docs/cinematic-techniques.md) | ⭐ **电影感十一条拍摄手法（速查）**——想快速上手先看这份 |
-| [docs/material-discipline.md](docs/material-discipline.md) | ⚠️ **素材纪律：转场/换段时该删哪些图**（乱入事故的头号预防） |
-| [docs/voice-continuity.md](docs/voice-continuity.md) | ⚠️ **语音连贯性 SOP**：跨段保持同一角色声音（TTS/音色锚点） |
-| [docs/repair-sop.md](docs/repair-sop.md) | 补镜与修复 SOP：延长上限、60 秒天花板、剪一段再延长（踩坑实录） |
-| [docs/post-production.md](docs/post-production.md) | 剪映后期去 AI 感：颗粒/暗角/调色/导出参数 |
-| 案例一《咖啡计划》 | 30 秒粤语咖啡广告（单次直出）：[剧本](examples/coffee-plan/story.md) · [提示词](examples/coffee-plan/prompts.md) |
-| 案例二《雨夜》 | 85 秒三段式悲剧短片：[剧本](examples/rainy-night/story.md) · [第一段](examples/rainy-night/segment-1-prompt.md) · [第二段+补镜](examples/rainy-night/segment-2-prompt.md) · [第三段](examples/rainy-night/segment-3-prompt.md) · [参考图](examples/rainy-night/image-prompts.md) · [成片评审复盘](examples/rainy-night/review.md) |
-| [CHANGELOG.md](CHANGELOG.md) | 版本历史 |
+| 0 | Ten-question philosophy + core formula |
+| 1 | Reference material orchestration — binding/exclusion syntax for the 50-slot system |
+| 2 | Time structure — dual-track model, per-beat end states, extension & repair |
+| 3–4 | Cinematography system + four-part breathing feel |
+| 5–6 | Performance system + sound system (a module the official guide is missing) |
+| 7–8 | Continuity Bible + two-tier anti-AI bans |
+| 9–11 | Storyboard-grid generator · length control · genre presets |
+| 12 | **Final assembly template** — every prompt in this repo follows this skeleton |
+| 14 | **Master-grade cinematic commandments** (12 rules distilled from frame-by-frame review) |
+| 15 | Pillow-shot module — B-roll semantic library + camera-move emotion mapping |
+| 16 | Lens psychology matrix (validation in progress from live production) |
+| 17 | **Facial muscle system** (FACS-lite) — describe muscles, not adjectives |
+| 18 | **Frame feasibility & prompt-engineering discipline** — where things break most; 12 sub-rules, every one traced to a real failure |
+| 19 | Dialogue engineering — multilingual/dialect rules, syllable-rate budget, per-line declaration syntax |
+| 20 | B-roll location-identity anchoring |
+| 21 | Character-sheet production & platform compliance — what format actually passes review |
+| 22 | Entry discipline & shot-ratio law |
 
-## 快速上手
+## Repo map
 
-1. **读 [FORMULA.md](FORMULA.md) 的"最终组装模板"**——一条 2.5 提示词的完整骨架
-2. **照抄一个 example**——两个案例的提示词都是实测跑通的成品，改主体就能用
-3. **每次换场景/新段生成前，过一遍 [material-discipline.md](docs/material-discipline.md) 的删图清单**
-4. **角色有台词的**：延长段自动继承音色（加一句延续声明即可）；**独立新生成的段落必须先按 [voice-continuity.md](docs/voice-continuity.md) 剪音色锚点并绑定**
-5. 想让 Claude 自动干这些：把整个仓库放进 `~/.claude/skills/jacob-seedance/`，对 Claude 说一句剧情即可
+| File | What's in it |
+|---|---|
+| [FORMULA.md](FORMULA.md) | The full framework — see table above |
+| [SKILL.md](SKILL.md) | Claude Code Skill entry point — drop into `~/.claude/skills/`, describe a scene, get a director-grade prompt |
+| [AGENTS.md](AGENTS.md) | **Usage guide for any AI agent** (Codex, Cursor, Gemini CLI, etc.): read order, workflow, pre-delivery checklist |
+| [docs/cinematic-techniques.md](docs/cinematic-techniques.md) | ⭐ **11 cinematic techniques, quick reference** — start here |
+| [docs/material-discipline.md](docs/material-discipline.md) | ⚠️ Which reference images to drop between segments (the #1 cause of unwanted intrusions) |
+| [docs/voice-continuity.md](docs/voice-continuity.md) | ⚠️ Keeping the same character voice across independent generations (voice-anchor SOP) |
+| [docs/repair-sop.md](docs/repair-sop.md) | Repair playbook: extension-chain ceiling, "extend continues, it doesn't redo" |
+| [docs/post-production.md](docs/post-production.md) | De-AI-ifying in post: grain, vignette, grading, export settings |
+| Example 1 — *Coffee Plan* | 30s Cantonese ad: [story](examples/coffee-plan/story.md) · [prompts](examples/coffee-plan/prompts.md) |
+| Example 2 — *Rainy Night* | 85s three-act tragedy: [story](examples/rainy-night/story.md) · [segment 1](examples/rainy-night/segment-1-prompt.md) · [segment 2 + repair](examples/rainy-night/segment-2-prompt.md) · [segment 3](examples/rainy-night/segment-3-prompt.md) · [image prompts](examples/rainy-night/image-prompts.md) · [post-mortem review](examples/rainy-night/review.md) |
+| [CHANGELOG.md](CHANGELOG.md) | Version history — every entry traces back to a specific production failure |
 
-## 在其他 AI 代理里使用
+## Quick start
 
-仓库是纯 Markdown，任何能读文件的代理都能用。
+1. **Read [FORMULA.md §12](FORMULA.md)**, the final assembly template — the complete skeleton of one 2.5 prompt
+2. **Copy an example verbatim** — both case studies are production-tested and generation-verified; swap the subject and go
+3. **Before every new segment, run the delete-checklist in [material-discipline.md](docs/material-discipline.md)**
+4. **Characters with dialogue**: an *extended* segment inherits voice automatically (one continuation line is enough); a segment generated *independently* needs a cut voice anchor per [voice-continuity.md](docs/voice-continuity.md)
+5. Want an AI to do all of this for you? Drop the whole repo into `~/.claude/skills/jacob-seedance/`, or clone it and let any file-reading agent take over
+
+## Using this with any AI agent
+
+The repo is plain Markdown — any agent that can read files can use it.
 
 ```bash
 git clone https://github.com/jacobye2017-afk/jacob-ye-seedance-prompt.git
 cd jacob-ye-seedance-prompt
 ```
 
-| 代理 | 用法 |
+| Agent | How |
 |---|---|
-| **Codex CLI** | 在仓库目录里启动，它会自动读取 [AGENTS.md](AGENTS.md)；直接说"帮我写一段30秒雨夜吵架的提示词" |
-| **Cursor / Windsurf** | 打开仓库为工作区，让它先读 AGENTS.md 和 FORMULA.md |
-| **Claude Code** | 复制到 `~/.claude/skills/jacob-seedance/`，或在仓库目录里直接对话 |
-| **Gemini CLI / 其他** | 让代理先读 AGENTS.md，其余照做 |
+| **Codex CLI** | Launch inside the repo — it auto-reads [AGENTS.md](AGENTS.md); just say "write me a 30s rainy-night argument scene" |
+| **Cursor / Windsurf** | Open the repo as a workspace, point it at AGENTS.md and FORMULA.md first |
+| **Claude Code** | Copy into `~/.claude/skills/jacob-seedance/`, or chat directly inside the repo |
+| **Gemini CLI / others** | Have the agent read AGENTS.md first, then proceed normally |
 
-不想装工具的话，把 [FORMULA.md](FORMULA.md) 的 §12 组装模板和 §14 军规贴进任意聊天窗口，也能直接用。
+No tooling? Paste the §12 assembly template and §14 commandments from [FORMULA.md](FORMULA.md) into any chat window — it works standalone.
 
-## 实战验证记录
+## Battle-tested track record
 
-| 项目 | 形态 | 验证的能力 |
+| Project | Format | Capability proven |
 |---|---|---|
-| 《咖啡计划》 | 30s 单次直出，粤语台词 | 官方架构组装、色彩弧线、双角色一致性、声音标记语法 |
-| 《雨夜》第一段 | 30s 直出 | 情绪五级台阶（怒忍崩泣释）、眼泪秒表门控、道具戏（伞） |
-| 《雨夜》第二段 | 30s 延长 | B-roll 开场块、倒影转场、延长衔接、出租车素材绑定 |
-| 《雨夜》补镜 | 裁剪+9s 延长 | 60s 天花板绕行、"延长是接着拍不是重拍"原理 |
-| 《雨夜》第三段 | 30s 独立新生成 | 30 秒一镜到底怼脸哭戏、六道防线、音色锚点跨段锁声、手机门控 |
+| *Coffee Plan* | 30s single-shot, Cantonese dialogue | Official 2.5 architecture assembly, color-arc contract, two-character consistency, audio-marker syntax |
+| *Rainy Night*, segment 1 | 30s single-shot | Five-stage emotional escalation, tear-timing gates, prop-driven subplot (the umbrella) |
+| *Rainy Night*, segment 2 | 30s extension | B-roll cold-open block, reflection transition, extension continuity, taxi-asset binding |
+| *Rainy Night*, repair pass | Trim + 9s extension | Working around the 60s extension-chain ceiling; "extend continues, it doesn't redo" |
+| *Rainy Night*, segment 3 | 30s standalone, one continuous take | Face-to-camera crying in one unbroken shot, six-stage emotional collapse, cross-segment voice anchoring, phone-prop gating |
+| *After the Rain*, full film | ~6-minute Cantonese short | Dual-card role/appearance splitting, "card locks form, text locks state," positively-specified extras density, per-line dialogue engineering, overhead framing for liquid physics, bans paired with a mutually-exclusive positive state |
 
-## 致谢与来源
+## Why not just a prompt list
 
-- 字节跳动 Seedance 2.5 官方用户手册与提示词指南（2026-07-31）
-- Seedance 2.5 production reference by Serge Shima — [smixs/visual-skills](https://github.com/smixs/visual-skills)（CC BY 4.0）
-- [MapleShaw/seedance2.0-prompt-skill](https://github.com/MapleShaw/seedance2.0-prompt-skill) 的相机四维编码与合规红线经验
-- Jacob Ye 的 FILM FORMULA V2.0（与 GPT 共研的 2.0 时代原型）
+| | Generic prompt collections | Asking ChatGPT/Claude directly | This framework |
+|---|---|---|---|
+| Frame-feasibility checks | ❌ | ❌ (routinely asks for a phone visible inside a face close-up) | ✅ §18, 12 sub-rules |
+| Emotion → muscle-level action library | ❌ | Occasionally | ✅ §17, with an amplitude constraint against overacting |
+| Dialect TTS syllable-rate budget | ❌ | ❌ | ✅ §19, ~3 syllables/sec |
+| Platform review-compliant formats | ❌ | ❌ | ✅ §21, with a researched review-policy timeline |
+| Every rule traceable to a real failure | ❌ | — | ✅ see [CHANGELOG.md](CHANGELOG.md) |
+| Complete, generation-verified film case studies | Rare | ❌ | ✅ two, prompts fully open-sourced |
+
+## Roadmap
+
+- [ ] §16 lens psychology matrix — full index of focal length × height × angle × framing → psychological effect (validating against live production now)
+- [ ] Dialect-engineering rules for more languages (currently: Hong Kong Cantonese)
+- [ ] A third open-sourced film case study
+
+Found a new failure mode and already worked out the fix? PRs welcome — this repo **grows from real production failures**; every rule here is a lesson someone already paid for.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jacobye2017-afk/jacob-ye-seedance-prompt&type=Date)](https://star-history.com/#jacobye2017-afk/jacob-ye-seedance-prompt&Date)
+
+## FAQ
+
+**Does this work with Seedance 2.0?**
+Partially. §3–9 and §14–17 (cinematography, breathing feel, performance, sound, the commandments, pillow shots, the muscle system) are general filmmaking method — they apply regardless of engine. §1 (the 50-slot binding syntax), §2 (30s single-pass + extension), and the §12 assembly template are 2.5-specific mechanics — 2.0 caps at 15 seconds, has a simpler binding grammar, and briefly restricted photoreal human references (banned Feb 2026, replaced by a consent-verification gate in April, see §21.1). Use the "directing" layer as-is on 2.0; downgrade the "platform syntax" layer to 2.0's actual limits.
+
+**I don't read Chinese — can I still use this?**
+The output prompts are written in Chinese because that's Jimeng's input language — you paste them in directly, no translation needed to use them. The deeper documentation is currently Chinese-only but cleanly structured; feed it to any translator, or hand the whole repo to an AI agent (see the table above) and have it operate the workflow for you.
+
+**Is this an official ByteDance project?**
+No. This is an independent developer's practical extension and merge of the official prompt guide, for educational/reference use. No affiliation with ByteDance.
+
+**Can I use the example characters/scripts commercially?**
+The prompts in the examples are original creative work — copy and adapt them freely for your own projects. Final licensing/compliance on generated output is governed by Jimeng's own platform terms.
+
+**Why build rules from real failures instead of documenting theoretical best practices?**
+Because theoretical best practice often doesn't survive contact with a video model — it will satisfy a "reasonable-looking" framing requirement in a way you didn't expect. Every rule in this repo was paid for in credits first, then written down. That's what makes it trustworthy.
+
+## Acknowledgments & sources
+
+- ByteDance's official Seedance 2.5 user guide and prompt guide (2026-07-31)
+- The Seedance 2.5 production reference by Serge Shima — [smixs/visual-skills](https://github.com/smixs/visual-skills) (CC BY 4.0)
+- [MapleShaw/seedance2.0-prompt-skill](https://github.com/MapleShaw/seedance2.0-prompt-skill) for the four-axis camera codec and compliance red lines
+- Jacob Ye's FILM FORMULA V2.0 (co-developed with GPT during the 2.0 era)
+
+## Contributing
+
+Found a new way this breaks, and already have a fix that works? Open a PR. Follow the existing [CHANGELOG.md](CHANGELOG.md) format — **problem → root cause → rule → example** — and cite the chapter number. Untested theory-only suggestions: open an Issue and let's discuss first.
 
 ## License
 
-[CC BY 4.0](LICENSE) — 转载与二创请注明出处。
+[CC BY 4.0](LICENSE) — please credit on reuse or derivative work.
 
-*JACOB YE · SEEDANCE PROMPT 1.0 · 2026-08*
+---
+
+**If this framework saved you a few hundred generation credits, a ⭐ is the best thank-you.**
+
+*JACOB YE · SEEDANCE PROMPT · August 2026*
