@@ -2,3 +2,12 @@ Thumbs.db
 .DS_Store
 *.mp4
 *.mov
+
+# Local production inputs, generated media and provider responses stay local.
+/assets/
+/output/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc

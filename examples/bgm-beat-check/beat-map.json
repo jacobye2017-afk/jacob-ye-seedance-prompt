@@ -1,0 +1,206 @@
+{
+  "duration_seconds": 22.081,
+  "tempo_estimate_bpm": 87.2,
+  "autocorrelation_bpm": 87.2,
+  "beat_interval_median_seconds": 0.688,
+  "tempo_method": "spectral flux autocorrelation and tempo-constrained dynamic programming; no direct listening",
+  "meter": "unconfirmed; do not assume 4/4 or label bar downbeats",
+  "beats": [
+    {
+      "time": 0.053,
+      "strength": 0.325,
+      "evidence": "weak/interpolated"
+    },
+    {
+      "time": 0.712,
+      "strength": 0.644,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 1.42,
+      "strength": 0.494,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 2.108,
+      "strength": 0.496,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 2.727,
+      "strength": 0.656,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 3.435,
+      "strength": 0.827,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 4.114,
+      "strength": 0.727,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 4.733,
+      "strength": 0.577,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 5.421,
+      "strength": 0.601,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 6.169,
+      "strength": 0.863,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 6.908,
+      "strength": 0.691,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 7.566,
+      "strength": 0.799,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 8.245,
+      "strength": 0.898,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 8.953,
+      "strength": 0.691,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 9.751,
+      "strength": 0.609,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 10.469,
+      "strength": 0.491,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 11.118,
+      "strength": 0.734,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 11.796,
+      "strength": 0.698,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 12.555,
+      "strength": 0.804,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 13.213,
+      "strength": 0.606,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 13.862,
+      "strength": 0.624,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 14.59,
+      "strength": 0.763,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 15.308,
+      "strength": 0.663,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 16.007,
+      "strength": 0.647,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 16.695,
+      "strength": 0.65,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 17.384,
+      "strength": 0.919,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 18.152,
+      "strength": 0.702,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 18.791,
+      "strength": 0.603,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 19.459,
+      "strength": 1.0,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 20.167,
+      "strength": 0.691,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 20.896,
+      "strength": 0.569,
+      "evidence": "attack-aligned"
+    },
+    {
+      "time": 21.554,
+      "strength": 0.437,
+      "evidence": "attack-aligned"
+    }
+  ],
+  "candidate_cut_points_seconds": [
+    3.435,
+    6.908,
+    11.118,
+    14.59,
+    18.152
+  ],
+  "candidate_cut_points_30fps": [
+    {
+      "time": 3.435,
+      "frame": 103,
+      "timeline_seconds": 3.433
+    },
+    {
+      "time": 6.908,
+      "frame": 207,
+      "timeline_seconds": 6.9
+    },
+    {
+      "time": 11.118,
+      "frame": 334,
+      "timeline_seconds": 11.133
+    },
+    {
+      "time": 14.59,
+      "frame": 438,
+      "timeline_seconds": 14.6
+    },
+    {
+      "time": 18.152,
+      "frame": 545,
+      "timeline_seconds": 18.167
+    }
+  ],
+  "tail_note": "Level decreases after approximately20.5 seconds; hold ending rather than forcing extra cuts",
+  "caution": "Algorithmic candidates, not ear-verified beats. Half/double-time ambiguity remains. Cut choices are editorial suggestions, not detected musical phrase boundaries."
+}

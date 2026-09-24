@@ -131,6 +131,8 @@ WORLD (what's the setting) · ACTOR (who's in it) · CAMERA (what is it doing) �
 
 ## Quick start
 
+**Production workflow 2.0 is archived** (Chinese): [workflow](docs/workflows/production-workflow-2.0-pilot.md), [BGM timing workflow and script](docs/workflows/bgm-led-mv.md), [Rurikoin delivery review](examples/rurikoin-mv/review.md), and [user-confirmed beat preview](examples/bgm-beat-check/review.md). The [1.5 snapshot](docs/workflows/production-workflow-1.5-legacy.md) is preserved. This case validates delivery and beat-preview acceptance; the next fully BGM-led film still needs production validation.
+
 1. **Read [FORMULA.md §12](FORMULA.md)**, the final assembly template — the complete skeleton of one 2.5 prompt
 2. **Copy an example verbatim** — both case studies are production-tested and generation-verified; swap the subject and go
 3. **Before every new segment, run the delete-checklist in [material-discipline.md](docs/material-discipline.md)**

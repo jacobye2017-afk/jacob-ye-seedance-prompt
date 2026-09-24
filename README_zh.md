@@ -128,6 +128,8 @@ WORLD 场景是什么 · ACTOR 谁在里面 · CAMERA 摄影机在做什么 · L
 
 ## 快速上手
 
+**制作工作流 2.0 已归档**：[完整流程](docs/workflows/production-workflow-2.0-pilot.md) · [BGM 卡点流程与脚本](docs/workflows/bgm-led-mv.md) · [琉璃光院交付复盘](examples/rurikoin-mv/review.md) · [用户试听确认记录](examples/bgm-beat-check/review.md)。旧版 [1.5 快照](docs/workflows/production-workflow-1.5-legacy.md) 保留。拍点检测与本片交付已验证；下一条 BGM 驱动整片仍需实际验收。
+
 1. **读 [FORMULA.md](FORMULA.md) 第 12 章"最终组装模板"**——一条 2.5 提示词的完整骨架
 2. **照抄一个 example**——两个案例的提示词都是实测跑通的成品，改主体就能用
 3. **每次换场景/新段生成前，过一遍 [material-discipline.md](docs/material-discipline.md) 的删图清单**
